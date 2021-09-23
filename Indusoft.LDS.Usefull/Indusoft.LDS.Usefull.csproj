@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{50E01EA1-561E-4F1F-9338-F70640642618}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Indusoft.LDS.Usefull</RootNamespace>
+    <AssemblyName>Indusoft.LDS.Usefull</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <LangVersion>4</LangVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Indusoft.LDS.Usefull.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\Indusoft.LDS.Usefull.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Indusoft.LDS.Admin, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Admin.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Acss, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Acss.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.AE, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.AE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.AE.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.AE.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.AnalysisInputControl, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.AnalysisInputControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit.Calibration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.Calibration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit.ICT, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.ICT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit.RMG76, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.RMG76.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Audit.TechMethods, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Audit.TechMethods.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Calibration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Calibration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Calibration.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Calibration.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Clfs.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Clfs.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Codes, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Codes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Cond, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Cond.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.ContractCompany, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.ContractCompany.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.ContractCompany.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.ContractCompany.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.DigitalSets, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.DigitalSets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EngUnits, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EngUnits.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.ADE, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.ADE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.Eltra, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.Eltra.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.Hromatek, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.Hromatek.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.ProductionPlan, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.ProductionPlan.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.SRM25, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.SRM25.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.SRM35, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.SRM35.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EQP.Importers.TableReader, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EQP.Importers.TableReader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.EST, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.EST.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Exchange, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Exchange.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Exchange.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Exchange.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Fmt, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Fmt.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.FP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.FP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.FP.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.FP.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.FP.Sap, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.FP.Sap.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.GNS, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.GNS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.IC, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.IC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.IC.Algs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.IC.Algs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.IC.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.IC.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Labels, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Labels.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Labels.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Labels.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.LabLog, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.LabLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Mask, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Mask.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Methods, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Methods.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.NormContext, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.NormContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.OrgUnits, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.OrgUnits.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.PI, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.PI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.PP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.PP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Products, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Products.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.RE, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.RE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.RE.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.RE.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.RE.View, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.RE.View.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Request, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Request.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Request.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Request.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Rooms, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Rooms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleContext, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleLabel, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleLabel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleLabel.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleLabel.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleLogs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleLogs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleLogs.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleLogs.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SampleLogViews, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SampleLogViews.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.AnalysisOnDemand, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.AnalysisOnDemand.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.Arbitration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.Arbitration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.SampleRedirect, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.SampleRedirect.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.Script, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.Script.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Samples.Search, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Samples.Search.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Specs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Specs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.SR, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.SR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.ST, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.ST.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Staff, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Staff.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Staff.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Staff.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Stamp, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Stamp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Stat, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Stat.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.StdDoc, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.StdDoc.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Tags, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Tags.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Tasks, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Tasks.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Tasks.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Techs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Techs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.TM, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.TM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Tools, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.Tools.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.Tools.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Client.TTMetrology, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Client.TTMetrology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Cond.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Cond.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Controls, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Core, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Core2, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Core2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Data, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.DataIntegration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.DataIntegration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.DataIntegration.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.DataIntegration.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.EngUnitConverter, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.EngUnitConverter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.EngUnitConverters.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.EngUnitConverters.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Explorer, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Explorer.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Format.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Format.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Graphics, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Graphics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Importers.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Importers.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Integration.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Integration.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.IReports, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.IReports.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.LabAnalysis.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.LabAnalysis.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Lic, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Lic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Math, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Math.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Metrology, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Metrology.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Metrology.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Metrology.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Performance, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Performance.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Qcf, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Qcf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Qcf.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Qcf.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Qcf.View, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Qcf.View.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ReportDesignerFix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ReportDesignerFix.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Reports, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Reports.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ReportsExt, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ReportsExt.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Result.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Result.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.RM, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.RM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.RM.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.RM.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.RM.Config, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.RM.Config.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.RM.ExtData, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.RM.ExtData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.RM.HWS, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.RM.HWS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SampleAnalysis, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SampleAnalysis.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SampleAnalysis.Functions, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SampleAnalysis.Functions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SampleContext.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SampleContext.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SampleScriptContext, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SampleScriptContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SampleScriptContext.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SampleScriptContext.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ScriptCodeEditor, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ScriptCodeEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ScriptCommon, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ScriptCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ScriptEngine, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ScriptEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.ScriptStorage, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.ScriptStorage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Server.DataService, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Server.DataService.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Acss, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Acss.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.AE, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.AE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.AF, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.AF.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Audit, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Audit.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Calibration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Calibration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Clfs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Clfs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.ClientSessionManager, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.ClientSessionManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Cond, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Cond.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.ContractCompany, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.ContractCompany.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.EQP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.EQP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.EST, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.EST.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Fmt, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Fmt.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.FP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.FP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.FP.Sap, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.FP.Sap.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.FPVerify, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.FPVerify.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.GlobalParameters, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.GlobalParameters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.GNS, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.GNS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.IC, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.IC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Importers, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Importers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Integration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Integration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Labels, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Labels.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.LabLog, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.LabLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Log, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Log.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Methods, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Methods.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.NormContext, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.NormContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Notifications, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Notifications.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.OA, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.OA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.PckgType, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.PckgType.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.PP, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.PP.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Qcf, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Qcf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.RE, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.RE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Reports, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Reports.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Repository, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Repository.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Request, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Request.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Rooms, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Rooms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.SampleContext, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.SampleContext.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.SampleFilter, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.SampleFilter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.SampleLogs, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.SampleLogs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Samples, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Samples.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Samples.Arbitration, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Samples.Arbitration.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.SR, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.SR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.ST, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.ST.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Staff, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Staff.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Stamp, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Stamp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Stat, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Stat.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Stock, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Stock.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Tags, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Tags.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Tasks, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Tasks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.TM, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.TM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.Tools, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Tools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.TTRanges, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.TTRanges.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Services.Contracts.UFValueSets, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.UFValueSets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Stock, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Stock.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Stock.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Stock.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Storage, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Storage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Storage.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Storage.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.SZSK, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.SZSK.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.Techniques.Common, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Techniques.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.TechView, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.TechView.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.UDT, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.XtraReports, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.XtraReports.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Indusoft.LDS.XtraReports.Storage, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.XtraReports.Storage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Calcination.cs" />
+    <Compile Include="g.cs" />
+    <Compile Include="gLogger.cs" />
+    <Compile Include="GradGraphClass.cs" />
+    <None Include="g_obsolete.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
