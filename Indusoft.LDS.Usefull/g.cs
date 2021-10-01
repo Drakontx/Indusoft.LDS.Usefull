@@ -89,7 +89,7 @@ namespace Indusoft.LDS.Usefull
         /// </summary>
         /// <param name="TechTests"></param>
         /// <returns></returns>
-        public static bool vExist(params Indusoft.LDS.Client.Samples.Script.TechTest[] TechTests)
+        public static bool vExists(params Indusoft.LDS.Client.Samples.Script.TechTest[] TechTests)
         {
             for (int i = 0, e = TechTests.Length; i < e; i++)
                 if (!TechTests[i].Exists)
@@ -102,7 +102,7 @@ namespace Indusoft.LDS.Usefull
         /// </summary>
         /// <param name="TechTests"></param>
         /// <returns></returns>
-        public static bool vExistAndNotNull(params Indusoft.LDS.Client.Samples.Script.TechTest[] TechTests)
+        public static bool vExistsAndNotNull(params Indusoft.LDS.Client.Samples.Script.TechTest[] TechTests)
         {
             for (int i = 0, e = TechTests.Length; i < e; i++)
             {
@@ -616,15 +616,15 @@ namespace Indusoft.LDS.Usefull
         /// </summary>
         /// <param name="Test">Показатель</param>
         /// <param name="round_decimals">Количество знаков, которым ограничивается сравнение</param>
-        /// <param name="difference">Разница</param>
+        /// <param name="threshold">Разница</param>
         /// <param name="measures_amount">Добавляемое количество измерений. (1 по умолчанию)</param>
-        public static void AddMeasureByThreshold(AnalogTechTest Test, int round_decimals, double difference, int measures_amount = 1)
+        public static void AddMeasureByThreshold(AnalogTechTest Test, int round_decimals, double threshold, int measures_amount = 1)
         {
             if (Test.Exists)
             {
-                if (Test.Measures.Count > 1)
+                if (Test.Measures.Count > 1 && threshold != double.NaN)
                 {
-                    if (Math.Round(Math.Abs(Test.Measures[Test.Measures.Count - 1].Value - Test.Measures[Test.Measures.Count - 2].Value), round_decimals) > difference)
+                    if (Math.Round(Math.Abs(Test.Measures[Test.Measures.Count - 1].Value - Test.Measures[Test.Measures.Count - 2].Value), round_decimals) > threshold)
                     {
                         Test.AddMeasures(measures_amount);
                     }

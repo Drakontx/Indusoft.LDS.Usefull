@@ -21,10 +21,10 @@ using Indusoft.LDS.Techniques.Common;
 namespace Indusoft.LDS.Usefull
 {
 	/// <summary>
-	/// Прокаливание.
+	/// Серийный показатель.
 	/// Значение одного измерения выбранного показателя = выбранное значение определенного показателя с N измерений.
 	/// </summary>
-	public class Calcination
+	public class SerialTest
 	{
 		/// <summary>
 		/// 
@@ -32,7 +32,7 @@ namespace Indusoft.LDS.Usefull
 		/// <param name="Threshold">Пороговая разница последнего и предпоследнего измерения вспомогательного показателя, при привышении которой ему будет добавлено измерение</param>
 		/// <param name="MainTest">Главный показатель</param>
 		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
-		public Calcination(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
+		public SerialTest(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
 		{
 			this.Threshold = Threshold;
 			this.MainTest = MainTest;
@@ -48,7 +48,7 @@ namespace Indusoft.LDS.Usefull
 		/// <param name="Threshold">Пороговая разница последнего и предпоследнего измерения вспомогательного показателя, при привышении которой ему будет добавлено измерение</param>
 		/// <param name="MainTest">Главный показатель</param>
 		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
-		public Calcination(ReturnValue valueMode, double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(Threshold, MainTest, MeasureTests)
+		public SerialTest(ReturnValue valueMode, double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(Threshold, MainTest, MeasureTests)
 		{
 			this.ValueMode = valueMode;
 		}

@@ -1003,7 +1003,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calcination.cs" />
+    <Compile Include="SerialTest.cs" />
     <Compile Include="g.cs" />
     <Compile Include="gLogger.cs" />
     <Compile Include="GradGraphClass.cs" />
