@@ -276,17 +276,6 @@ namespace Indusoft.LDS.Usefull
         #endregion Методы округлений
 
         /// <summary>
-        /// Возвращает значение опеределения показателя
-        /// </summary>
-        /// <param name="index">Индекс определения</param>
-        /// <param name="analogTechTest">Показатель</param>
-        /// <returns>Значение определения</returns>
-        public static double m(int index, AnalogTechTest analogTechTest)
-        {
-            return analogTechTest.Measures[index].Value;
-        }
-
-        /// <summary>
         /// Возвращает интерполированное значение X (линейная интерполяция)
         /// </summary>
         /// <param name="x1">X1</param>
@@ -570,12 +559,22 @@ namespace Indusoft.LDS.Usefull
             int measures = int.MinValue;
 
             foreach (AnalogTechTest att in SyncTechTests)
-                if (measures < att.Measures.Count)
-                    measures = att.Measures.Count;
+            {
+                if (att.Exists)
+                {
+                    if (measures < att.Measures.Count)
+                        measures = att.Measures.Count;
+                }
+            }
 
             foreach (AnalogTechTest att in SyncTechTests)
-                if (att.Measures.Count < measures)
-                    att.AddMeasures(measures - att.Measures.Count);
+            {
+                if (att.Exists)
+                {
+                    if (att.Measures.Count < measures)
+                        att.AddMeasures(measures - att.Measures.Count);
+                }
+            }
         }
 
         /// <summary>

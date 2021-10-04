@@ -42,11 +42,9 @@ namespace Indusoft.LDS.Usefull
         /// <param name="product">Продукт образца</param>
         /// <param name="GGProductPattern">Маска наименования продукта для построения ГГ (Устанавливаемое в типах возможностей ГГ)</param>
         /// <param name="AnalitSignal_Tests">Показатели, по которым из ГГ определяются искомые значения</param>
-        public GradGraphClass(string product, string GGProductPattern, params AnalogTechTest[] AnalitSignal_Tests)
+        public GradGraphClass(string product, string GGProductPattern, params AnalogTechTest[] AnalitSignal_Tests):this(product, AnalitSignal_Tests)
         {
-            Product = product;
             SetGGProductPattern(GGProductPattern);
-            InitializeDpublic(AnalitSignal_Tests);
         }
 
         /// <summary>
@@ -75,17 +73,24 @@ namespace Indusoft.LDS.Usefull
                 }
             }
         }
-        List<double> ZeroList(int number)
+
+        /// <summary>
+        /// Генерация нулевого листа
+        /// </summary>
+        /// <param name="amount">Число элементов</param>
+        /// <returns></returns>
+        List<double> ZeroList(int amount)
         {
             List<double> result = new List<double>();
-            for (int i = 0; i < number; i++)
+            for (int i = 0; i < amount; i++)
             {
                 result.Add(0);
             }
             return result;
         }
+
         /// <summary>
-        /// Синхронизация элементов Dpublic из измерений показателя
+        /// Синхронизация количества элементов Dpublic из измерений показателя
         /// </summary>
         /// <param name="AnalitSignal">Показатель с измерениями</param>
         void CheckDpublicMeasures(AnalogTechTest AnalitSignal)
@@ -93,22 +98,38 @@ namespace Indusoft.LDS.Usefull
             List<double> Dpublic;
             if (Dpublics.TryGetValue(AnalitSignal, out Dpublic))
             {
+                //Если количество измерений показателя не сходится с его Dpublic и в Dpublic что-то есть
                 if (AnalitSignal.Measures.Count != Dpublic.Count && Dpublic.Count > 0)
                 {
                     int difference = AnalitSignal.Measures.Count - Dpublic.Count;
                     if (difference < 0)
                     {
+                        //Убираем лишние
                         Dpublic.RemoveRange(Dpublic.Count + difference, Math.Abs(difference));
                     }
                     else
                     {
+                        //Добавляем недостающие
                         Dpublic.InsertRange(Dpublic.Count, ZeroList(Math.Abs(difference)));
                     }
                 }
             }
             else
             {
+                //Если такого показателя в словаре нет - инициализируем
                 InitializeDpublic(AnalitSignal);
+            }
+        }
+
+        /// <summary>
+        /// Встроенная синхронизация количества измерений ГГ для упрощения записи. Условие содержания в Product шаблона GGProductPattern. Ссылается на g.CheckMeasures
+        /// </summary>
+        /// <param name="SyncTechTests"></param>
+        public void CheckGGMeasures(params AnalogTechTest[] SyncTechTests)
+        {
+            if (Product.Contains(GGProductPattern))
+            {
+                g.CheckMeasures(SyncTechTests);
             }
         }
 
@@ -117,18 +138,12 @@ namespace Indusoft.LDS.Usefull
         /// </summary>
         /// <param name="Analit">показатель Аналит</param>
         /// <param name="AnalitSignal">показатель Аналитический сигнал</param>
-        /// <param name="GGCheckMeasures">Синхронизация измерений Аналит и Аналит.сигнала (по умолчанию = true)</param>
         /// <param name="GGNoEachMeasureError">Не показывать уведомления для каждого измерения (по умолчанию = да)</param>
-        public void GradGraph(AnalogTechTest Analit, AnalogTechTest AnalitSignal, bool GGCheckMeasures = true, bool GGNoEachMeasureError = true)
+        public void GradGraph(AnalogTechTest Analit, AnalogTechTest AnalitSignal, bool GGNoEachMeasureError = true)
         {
             bool clbrGraphExists = false;
             Guid? clbrGraphUid = null;
 
-            if (GGCheckMeasures && Product.Contains(GGProductPattern))
-            {
-                if (Analit.Exists && AnalitSignal.Exists)
-                    g.CheckMeasures(Analit, AnalitSignal);
-            }
             //Проверка наличия показателя для вывода результата и проверка продукта: расчет не должен работать при построении ГГ и контроле стабильности (ГГ не утвержден)
             if (Analit.Exists && AnalitSignal.Exists && !Product.Contains(GGProductPattern))
             {
@@ -145,6 +160,7 @@ namespace Indusoft.LDS.Usefull
                         clbrGraphExists = Analit.CheckGraphExists(Analit, AnalitSignal, AnalitSignal.Measures[i].Value, AnalitSignal.Eqps);
                         if (clbrGraphExists)
                         {
+                            //Получаем его Guid, если есть
                             clbrGraphUid = Analit.GetAnalitGraphUid(Analit, AnalitSignal, AnalitSignal.Measures[i].Value, AnalitSignal.Eqps);
                             break;
                         }
@@ -152,8 +168,11 @@ namespace Indusoft.LDS.Usefull
                 }
                 for (int i = 0; i < Analit.Measures.Count; i++)
                 {
+                    //Пересчитываем все, а не только то, что изменилось
+                    //Подходящий график существует
                     if (clbrGraphExists)
                     {
+                        //На всякий случай
                         if (clbrGraphUid != null)
                         {
                             //Рассчет значения по ГГ
@@ -161,27 +180,29 @@ namespace Indusoft.LDS.Usefull
                             if (g.mExists(Analit, i)) { Analit.Measures[i].Value = C; }
                         }
                     }
+                    //Подходящего нет и значение сигнала изменилось
                     else if (Dpublic[i] != AnalitSignal.Measures[i].Value)
                     {
                         try
                         {
+                            //Показываем возможные варианты
                             clbrGraphUid = Analit.GetAnalitGraphUid(Analit, AnalitSignal, AnalitSignal.Measures[i].Value, AnalitSignal.Eqps);
                             MessageBox.Show(
                             "Рассчитанное значение вышло за диапазон определения градуировочного графика.\n\nДля дальнейшей работы необходимо либо расширить диапазон графика, либо ввести следующий показатель вручную:\n[" + Analit.Name + "]",
                             Analit.Tech.Name,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
-                            if (GGNoEachMeasureError) break;
                         }
                         catch
                         {
+                            //Вариантов ВООБЩЕ нет
                             MessageBox.Show(
                             "В системе отсутствует подходящий градуировочный график.\n\nДля дальнейшей работы необходимо либо сформировать в системе подходящий градуировочный график, либо ввести следующий показатель вручную:\n[" + Analit.Name + "]",
                             Analit.Tech.Name,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
-                            if (GGNoEachMeasureError) break;
                         }
+                        if (GGNoEachMeasureError) break;
                     }
                 }
             }
@@ -194,18 +215,12 @@ namespace Indusoft.LDS.Usefull
         /// <param name="AnalitSignal">показатель Аналитический сигнал</param>
         /// <param name="Analit_Uid_source">показатель Аналит, по которому построен ГГ</param>
         /// <param name="AnalitSignal_Uid_source">показатель Аналит.сигнал, по которому построен ГГ</param>
-        /// <param name="GGCheckMeasures">Синхронизация измерений Аналит и Аналит.сигнала (по умолчанию = true)</param>
         /// <param name="GGNoEachMeasureError">Не показывать уведомления для каждого измерения (по умолчанию = да)</param>
-        public void GradGraph(AnalogTechTest Analit, AnalogTechTest AnalitSignal, AnalogTechTest Analit_Uid_source, AnalogTechTest AnalitSignal_Uid_source, bool GGCheckMeasures = true, bool GGNoEachMeasureError = true)
+        public void GradGraph(AnalogTechTest Analit, AnalogTechTest AnalitSignal, AnalogTechTest Analit_Uid_source, AnalogTechTest AnalitSignal_Uid_source, bool GGNoEachMeasureError = true)
         {
             bool clbrGraphExists = false;
             Guid? clbrGraphUid = null;
 
-            if (GGCheckMeasures && Product.Contains(GGProductPattern))
-            {
-                if (Analit.Exists && AnalitSignal.Exists)
-                    g.CheckMeasures(Analit, AnalitSignal);
-            }
             //Проверка наличия показателя для вывода результата и проверка продукта: расчет не должен работать при построении ГГ и контроле стабильности (ГГ не утвержден)
             if (Analit.Exists && AnalitSignal.Exists && Analit_Uid_source.Exists && AnalitSignal_Uid_source.Exists && !Product.Contains(GGProductPattern))
             {
@@ -241,23 +256,22 @@ namespace Indusoft.LDS.Usefull
                     {
                         try
                         {
-                            clbrGraphUid = Analit.GetAnalitGraphUid(Analit, AnalitSignal, AnalitSignal.Measures[i].Value, AnalitSignal.Eqps);
+                            clbrGraphUid = Analit.GetAnalitGraphUid(Analit_Uid_source, AnalitSignal_Uid_source, AnalitSignal.Measures[i].Value, AnalitSignal.Eqps);
                             MessageBox.Show(
-                            "Рассчитанное значение вышло за диапазон определения градуировочного графика.\n\nДля дальнейшей работы необходимо либо расширить диапазон графика, либо ввести следующий показатель вручную:\n[" + Analit.Name + "]",
+                            "Рассчитанное значение вышло за диапазон определения градуировочного графика.\n\nДля дальнейшей работы необходимо либо расширить диапазон графика, либо ввести следующий показатель вручную:\n\n[" + Analit.Name + "]",
                             Analit.Tech.Name,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
-                            if (GGNoEachMeasureError) break;
                         }
                         catch
                         {
                             MessageBox.Show(
-                            "В системе отсутствует подходящий градуировочный график.\n\nДля дальнейшей работы необходимо либо сформировать в системе подходящий градуировочный график, либо ввести следующий показатель вручную:\n[" + Analit.Name + "]",
+                            "В системе отсутствует подходящий градуировочный график.\n\nДля дальнейшей работы необходимо либо сформировать в системе подходящий градуировочный график, либо ввести следующий показатель вручную:\n\n[" + Analit.Name + "]",
                             Analit.Tech.Name,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
-                            if (GGNoEachMeasureError) break;
                         }
+                        if (GGNoEachMeasureError) break;
                     }
                 }
             }
