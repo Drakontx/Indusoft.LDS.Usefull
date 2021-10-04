@@ -29,16 +29,27 @@ namespace Indusoft.LDS.Usefull
 		/// <summary>
 		/// 
 		/// </summary>
+		/// <param name="MainTest">Главный показатель</param>
+		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
+		public SerialTest(AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
+		{
+			this.MainTest = MainTest;
+			this.MeasureTests = MeasureTests;
+
+			this.ValueMode = ReturnValue.LastMeasure;
+			this.Threshold = double.NaN;
+			Decimals = 5;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		/// <param name="Threshold">Пороговая разница последнего и предпоследнего измерения вспомогательного показателя, при привышении которой ему будет добавлено измерение</param>
 		/// <param name="MainTest">Главный показатель</param>
 		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
-		public SerialTest(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
+		public SerialTest(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(MainTest, MeasureTests)
 		{
 			this.Threshold = Threshold;
-			this.MainTest = MainTest;
-			this.MeasureTests = MeasureTests;
-			this.ValueMode = ReturnValue.LastMeasure;
-			Decimals = 5;
 		}
 
 		/// <summary>
@@ -66,7 +77,7 @@ namespace Indusoft.LDS.Usefull
 		/// <summary>
 		/// Порог разницы между измерениями массы высушиваемой чашки без осадка, при котором будет добавлено новое измерение его показателям-измерениям
 		/// </summary>
-		public double Threshold { get; private set; }
+		public double Threshold { get; set; }
 
 		/// <summary>
 		/// Количество знаков, которым ограничивается сравнение
@@ -86,7 +97,10 @@ namespace Indusoft.LDS.Usefull
 			HideShow();
 			foreach (AnalogTechTest ATest in MeasureTests)
 			{
-				g.AddMeasureByThreshold(ATest, Decimals, Threshold);
+				if (ATest.Visible)
+				{
+					g.AddMeasureByThreshold(ATest, Decimals, Threshold);
+				}
 			}
 			if (MainTest.Exists)
 			{
