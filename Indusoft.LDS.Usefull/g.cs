@@ -17,6 +17,7 @@ using Indusoft.LDS.Client.Samples.Script.Technique;
 using Indusoft.LDS.Services.Contracts.Repository;
 using Indusoft.LDS.Format.Common.Enums;
 using Indusoft.LDS.Techniques.Common;
+using Indusoft.LDS.Services.Contracts.Repository.DataServiceFactory;
 
 namespace Indusoft.LDS.Usefull
 {
@@ -271,7 +272,7 @@ namespace Indusoft.LDS.Usefull
                 return 0;
 
             double scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(d))) + 1);
-            return scale * Math.Round(d / scale, digits);
+            return scale * Math.Round(d / scale, digits, MidpointRounding.AwayFromZero);
         }
         #endregion Методы округлений
 
@@ -531,24 +532,6 @@ namespace Indusoft.LDS.Usefull
                 }
             }
         }
-
-        /// <summary>
-		/// Форматирование из вида 10^n в числовой
-		/// </summary>
-		/// <param name="analogTechTest">Показатель, которому нужно нормализовать формат</param>
-		public static void NormalizeValue(AnalogTechTest analogTechTest)
-        {
-            if (analogTechTest.Exists)
-            {
-                if (!analogTechTest.AbsError.Equals(double.NaN))
-                {
-                    //analogTechTest.AbsError = RoundExtension.SignificantDigitsRound(analogTechTest.AbsError, 2).Value;
-                    //analogTechTest.Value.ByAbsoluteErrorRound2(analogTechTest.AbsError);
-                    analogTechTest.FAbsError.ExponentNumberToDecimal();
-                    analogTechTest.FValue.ExponentNumberToDecimal();
-                }
-            }
-        }
         
         /// <summary>
          /// Синхронизировать количество измерений показателей
@@ -623,7 +606,7 @@ namespace Indusoft.LDS.Usefull
             {
                 if (Test.Measures.Count > 1 && threshold != double.NaN)
                 {
-                    if (Math.Round(Math.Abs(Test.Measures[Test.Measures.Count - 1].Value - Test.Measures[Test.Measures.Count - 2].Value), round_decimals) > threshold)
+                    if (Math.Round(Math.Abs(Test.Measures[Test.Measures.Count - 1].Value - Test.Measures[Test.Measures.Count - 2].Value), round_decimals, MidpointRounding.AwayFromZero) > threshold)
                     {
                         Test.AddMeasures(measures_amount);
                     }

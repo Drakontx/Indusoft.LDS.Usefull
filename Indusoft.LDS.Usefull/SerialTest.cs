@@ -37,6 +37,7 @@ namespace Indusoft.LDS.Usefull
 			this.MeasureTests = MeasureTests;
 
 			this.ValueMode = ReturnValue.LastMeasure;
+			this.Compare = CompareMode.Absolute;
 			this.Threshold = double.NaN;
 			Decimals = 5;
 		}
@@ -50,18 +51,6 @@ namespace Indusoft.LDS.Usefull
 		public SerialTest(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(MainTest, MeasureTests)
 		{
 			this.Threshold = Threshold;
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="valueMode">Выбор значения показателя-измерения, которое идет в измерение основного показателя</param>
-		/// <param name="Threshold">Пороговая разница последнего и предпоследнего измерения вспомогательного показателя, при привышении которой ему будет добавлено измерение</param>
-		/// <param name="MainTest">Главный показатель</param>
-		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
-		public SerialTest(ReturnValue valueMode, double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(Threshold, MainTest, MeasureTests)
-		{
-			this.ValueMode = valueMode;
 		}
 
 		/// <summary>
@@ -90,6 +79,11 @@ namespace Indusoft.LDS.Usefull
 		public ReturnValue ValueMode { get; set; }
 
 		/// <summary>
+		/// Режим сравнения предыдущего измерения
+		/// </summary>
+		public CompareMode Compare { get; set; }
+
+		/// <summary>
 		/// Обработать
 		/// </summary>
 		public void Process()
@@ -99,7 +93,20 @@ namespace Indusoft.LDS.Usefull
 			{
 				if (ATest.Visible)
 				{
-					g.AddMeasureByThreshold(ATest, Decimals, Threshold);
+					switch (Compare)
+					{
+						case CompareMode.Percent:
+							{
+								double threshold_from_perc = (ATest.Measures.Count > 1) ? Math.Round(ATest.Measures[ATest.Measures.Count - 2].Value * Threshold * 0.01, Decimals, MidpointRounding.AwayFromZero) : double.NaN;
+								g.AddMeasureByThreshold(ATest, Decimals, threshold_from_perc);
+								break;
+							}
+						case CompareMode.Absolute:
+						default:
+							g.AddMeasureByThreshold(ATest, Decimals, Threshold);
+							break;
+					}
+
 				}
 			}
 			if (MainTest.Exists)
@@ -163,5 +170,20 @@ namespace Indusoft.LDS.Usefull
 			/// </summary>
 			Average
 		}
+
+		/// <summary>
+		/// Режим сравнения предыдущего измерения
+		/// </summary>
+		public enum CompareMode
+        {
+			/// <summary>
+			/// По абсолютному значению
+			/// </summary>
+			Absolute,
+			/// <summary>
+			/// Процентное значение
+			/// </summary>
+			Percent
+        }
 	}
 }
