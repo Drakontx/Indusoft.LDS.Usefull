@@ -274,8 +274,46 @@ namespace Indusoft.LDS.Usefull
             double scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(d))) + 1);
             return scale * Math.Round(d / scale, digits, MidpointRounding.AwayFromZero);
         }
+        /// <summary>
+        /// Округление до заданного количества значащих цифр
+        /// </summary>
+        /// <param name="d">Число, которое требуется округлить</param>
+        /// <param name="digits">Количество значащих цифр, до которого нужно округлить</param>
+        /// <param name="format">Выходной формат значения для .ToString(format) - "0.00"</param>
+        /// <returns></returns>
+        public static decimal getSignificationDigit(double d, int digits, out string format)
+        {
+            format = "0.";
+            if (!d.Equals(0.0))
+            {
+                int digsafpoint = (int)(digits - 1 - Math.Floor(Math.Log10(Math.Abs(d))));
+                if (digsafpoint < 0) digsafpoint = 0;
+                for (int i = 0; i < digsafpoint; i++)
+                {
+                    format += "0";
+                }
+                return Convert.ToDecimal(Math.Round(d, digsafpoint, MidpointRounding.AwayFromZero));
+            }
+            else
+            {
+                return Convert.ToDecimal(d);
+            }
+        }
         #endregion Методы округлений
 
+
+        /// <summary>
+        /// Проверка на вхождение конечного значения показателя в предел определения показателя
+        /// </summary>
+        /// <param name="ATestParam">Показатель</param>
+        /// <returns></returns>
+        public static bool InRangeDefinition(AnalogTechTest ATestParam)
+        {
+            double value = AvgMeasures(ATestParam);
+            if (ATestParam.HaveHiBound && value > ATestParam.HiBound) return false;
+            if (ATestParam.HaveLoBound && value < ATestParam.LoBound) return false;
+            return true;
+        }
         /// <summary>
         /// Возвращает интерполированное значение X (линейная интерполяция)
         /// </summary>

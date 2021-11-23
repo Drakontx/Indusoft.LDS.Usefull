@@ -18,6 +18,8 @@ namespace Indusoft.LDS.Usefull
         /// <summary>
         /// Путь к файлу логов
         /// </summary>
+        // TODO: переработать путь хранения, узнать из какой дирректории запущено приложение Directory.GetCurrentDirectory(); 
+        // Получить дирректорию хранения логов из конфиг файла.
         private static string __log_file_path = @"C:\Documents and Settings\All Users\Application Data\InduSoft\I-LDS\2\Log\Indusoft.LDS.Calc.log";
         private const string __info_format = @"{0};  [INFO ];    {1}";
         private const string __error_format = "{0};  [ERROR];    {1}\r\n\t{2}\r\n\t{3}\r\n\t{4}";
