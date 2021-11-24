@@ -281,9 +281,9 @@ namespace Indusoft.LDS.Usefull
         /// <param name="digits">Количество значащих цифр, до которого нужно округлить</param>
         /// <param name="format">Выходной формат значения для .ToString(format) - "0.00"</param>
         /// <returns></returns>
-        public static decimal getSignificationDigit(double d, int digits, out string format)
+        public static double RoundToSignificantDigits(double d, int digits, out string format)
         {
-            format = "0.";
+            format = "#0.";
             if (!d.Equals(0.0))
             {
                 int digsafpoint = (int)(digits - 1 - Math.Floor(Math.Log10(Math.Abs(d))));
@@ -292,11 +292,11 @@ namespace Indusoft.LDS.Usefull
                 {
                     format += "0";
                 }
-                return Convert.ToDecimal(Math.Round(d, digsafpoint, MidpointRounding.AwayFromZero));
+                return Math.Round(d, digsafpoint, MidpointRounding.AwayFromZero);
             }
             else
             {
-                return Convert.ToDecimal(d);
+                return d;
             }
         }
         #endregion Методы округлений
