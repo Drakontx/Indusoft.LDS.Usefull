@@ -662,7 +662,7 @@ namespace Indusoft.LDS.Usefull
         {
             return analogTechTest.Measures[index].Value;
         }
-
+        //коммент тест2
         private static void NormalizeValue(AnalogTechTest analogTechTest, IScriptSession session)
         {
             var cdm = ((IGenericServiceProvider)session).GetService<IRepositoryDataServiceFactory>();
