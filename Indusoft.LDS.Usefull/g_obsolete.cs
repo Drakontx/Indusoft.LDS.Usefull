@@ -74,17 +74,6 @@ namespace Indusoft.LDS.Usefull
             return false;
         }
 
-        /// <summary>
-        /// Возвращает значение опеределения показателя
-        /// </summary>
-        /// <param name="index">Индекс определения</param>
-        /// <param name="analogTechTest">Показатель</param>
-        /// <returns>Значение определения</returns>
-        public static double m(int index, AnalogTechTest analogTechTest)
-        {
-            return analogTechTest.Measures[index].Value;
-        }
-
         #region GradGraph
         private static double[] Dpublic = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         private static double[] Dpublic2 = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
