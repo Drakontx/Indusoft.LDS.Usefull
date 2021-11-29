@@ -651,5 +651,33 @@ namespace Indusoft.LDS.Usefull
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает значение опеределения показателя
+        /// </summary>
+        /// <param name="index">Индекс определения</param>
+        /// <param name="analogTechTest">Показатель</param>
+        /// <returns>Значение определения</returns>
+        public static double m(int index, AnalogTechTest analogTechTest)
+        {
+            return analogTechTest.Measures[index].Value;
+        }
+
+        private static void NormalizeValue(AnalogTechTest analogTechTest, IScriptSession session)
+        {
+            var cdm = ((IGenericServiceProvider)session).GetService<IRepositoryDataServiceFactory>();
+            var ru = new RoundUtils(cdm);
+
+            if (analogTechTest.Exists)
+            {
+                if (analogTechTest.AbsError != double.NaN)
+                {
+                    RoundedView ErrorView = ru.SignificantDigitsRound(analogTechTest.AbsError, 2);
+                    RoundedView ValueView = ru.RoundByFormattedValue(analogTechTest.Value, ErrorView.View, (double val, int digits) => ru.RankRound(val, digits));
+                    analogTechTest.SetValue(ValueView.Value);
+                    analogTechTest.AbsError = ErrorView.Value;
+                }
+            }
+        }
     }
 }
