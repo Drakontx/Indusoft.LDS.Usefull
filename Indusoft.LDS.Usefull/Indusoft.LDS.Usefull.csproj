@@ -19,22 +19,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>$(ILDS_CORE_DLL)</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Indusoft.LDS.Usefull.xml</DocumentationFile>
+    <DocumentationFile>$(ILDS_CORE_DLL)\Indusoft.LDS.Usefull.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>$(ILDS_CORE_DLL)</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Release\Indusoft.LDS.Usefull.xml</DocumentationFile>
+    <DocumentationFile>$(ILDS_CORE_DLL)\Indusoft.LDS.Usefull.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Indusoft.LDS.Admin, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">

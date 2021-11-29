@@ -601,11 +601,12 @@ namespace Indusoft.LDS.Usefull
         /// <summary>
         /// Получение листа исторических данных по контексту
         /// </summary>
+        /// <param name="Calc"></param>
         /// <param name="days">Количество дней для поиска. -1 = 1 день по умолчанию</param>
         /// <param name="context">Контекст для поиска. Test - обязательно</param>
         /// <param name="messages">Показ сообщений об ошибках</param>
         /// <returns></returns>
-        public static List<AnalogTechTestResultHistory> HistTech(double days, TechTestHistoryContext context, bool messages = false)
+        public static List<AnalogTechTestResultHistory> HistTech(TechCalcBase Calc, double days, TechTestHistoryContext context, bool messages = false)
         {
             try
             {
@@ -614,12 +615,13 @@ namespace Indusoft.LDS.Usefull
                 if (days > 0)
                     days *= -1;
 
+                if (context.Statuses == null)
+                    context.Statuses = new int[] { 83, 192 };
                 if (context.Statuses.Length == 0)
                     context.Statuses = new int[] { 83, 192 };
 
                 DateTime backintime = DateTime.Now.AddDays(days);
-
-                var res = (new TechCalcBase()).GetHistoricalData(context, backintime, DateTime.Now);
+                var res = Calc.GetHistoricalData(context, backintime, DateTime.Now);
                 res.Sort((x, y) => -x.CreationDate.CompareTo(y.CreationDate));
                 return res;
             }
@@ -662,7 +664,7 @@ namespace Indusoft.LDS.Usefull
         {
             return analogTechTest.Measures[index].Value;
         }
-        //коммент тест2
+
         private static void NormalizeValue(AnalogTechTest analogTechTest, IScriptSession session)
         {
             var cdm = ((IGenericServiceProvider)session).GetService<IRepositoryDataServiceFactory>();
@@ -680,5 +682,4 @@ namespace Indusoft.LDS.Usefull
             }
         }
     }
-    ///Коммент тест
 }
