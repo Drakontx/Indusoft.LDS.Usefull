@@ -842,10 +842,9 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Reports.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Indusoft.LDS.Services.Contracts.Repository, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Indusoft.LDS.Services.Contracts.Repository, Version=3.40.1.27286, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS-NLMK_42301\E\Indusoft.LDS.Services.Contracts.Repository.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Indusoft\I-LDS\E\Indusoft.LDS.Services.Contracts.Repository.dll</HintPath>
     </Reference>
     <Reference Include="Indusoft.LDS.Services.Contracts.Request, Version=2.7.30.21979, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1003,6 +1002,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rounding\ServiceFactory.cs" />
+    <Compile Include="Rounding\Rounding.cs" />
     <Compile Include="SerialTest.cs" />
     <Compile Include="g.cs" />
     <Compile Include="gLogger.cs" />
