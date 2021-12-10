@@ -9,7 +9,6 @@ using System.Reflection;
 
 namespace Indusoft.LDS.Usefull
 {
-    // TODO: Переработать логер +
     /// <summary>
     /// 
     /// </summary>

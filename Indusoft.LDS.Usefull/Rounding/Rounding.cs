@@ -11,25 +11,43 @@ using System.Threading.Tasks;
 
 namespace Indusoft.LDS.Usefull.Rounding
 {
-    //TODO: Добавить возможность ручного режима использования независимо от базы
-    internal class Rounding
+    //TODO: Создать шаблоны округлений
+    /// <summary>
+    /// Округления ЛИМС
+    /// </summary>
+    public class Rounding
     {
+        /// <summary>
+        /// Внутренний класс округлений - RoundUtils
+        /// </summary>
         public RoundUtils RU { get; private set; }
 
+        /// <summary>
+        /// Получение информации форматирования из базы через сессию расчета
+        /// </summary>
+        /// <param name="session">Сессия расчета</param>
         public Rounding(IScriptSession session)
         {
             RU = new RoundUtils(new ServiceFactory(session));
         }
 
+        /// <summary>
+        /// Получение информации форматирования из базы через подключение напрямую
+        /// </summary>
+        /// <param name="connectionString">Строка подключения</param>
         public Rounding(string connectionString)
         {
             RU = new RoundUtils(new ServiceFactory(connectionString));
         }
 
-        public bool GetFormattedValue(TechTestValueFmt format, double value, out RoundedView view)
+        /// <summary>
+        /// Задание информации форматирования без базы - вручную
+        /// </summary>
+        /// <param name="rounding">Тип округления</param>
+        /// <param name="separator">Десятичный разделитель</param>
+        public Rounding(MidpointRounding rounding, string separator)
         {
-            view = new RoundedView();
-            return false;
+            RU = new RoundUtils(new ServiceFactory(rounding, separator));
         }
     }
 }

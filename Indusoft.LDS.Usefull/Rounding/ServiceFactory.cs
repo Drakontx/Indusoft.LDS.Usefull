@@ -16,6 +16,8 @@ namespace Indusoft.LDS.Usefull.Rounding
         private IScriptSession Session;
         private string ConnectionString;
         private WorkType ConnWorkType;
+        MidpointRounding Rounding;
+        string Separator;
 
         public ServiceFactory(IScriptSession session)
         {
@@ -26,6 +28,12 @@ namespace Indusoft.LDS.Usefull.Rounding
         {
             ConnectionString = connectionString;
             ConnWorkType = WorkType.Direct;
+        }
+        public ServiceFactory(MidpointRounding rounding, string separator)
+        {
+            Rounding = rounding;
+            Separator = separator;
+            ConnWorkType = WorkType.Manual;
         }
         public ServiceFactory()
         {
@@ -38,7 +46,7 @@ namespace Indusoft.LDS.Usefull.Rounding
                 case WorkType.Direct:
                     return new RepositoryDataService(ConnectionString, ConnWorkType);
                 case WorkType.Manual:
-                    return new RepositoryDataService(ConnWorkType);
+                    return new RepositoryDataService(Rounding, Separator, ConnWorkType);
                 case WorkType.Session:
                 default:
                     return new RepositoryDataService(Session, ConnWorkType);
@@ -57,6 +65,9 @@ namespace Indusoft.LDS.Usefull.Rounding
         private IScriptSession Session;
         private string ConnectionString;
         private ServiceFactory.WorkType ConnWorkType;
+        MidpointRounding Rounding;
+        string Separator;
+
         public RepositoryDataService(ServiceFactory.WorkType workType)
         {
             ConnWorkType = workType;
@@ -68,6 +79,11 @@ namespace Indusoft.LDS.Usefull.Rounding
         public RepositoryDataService(string connectionString, ServiceFactory.WorkType workType) : this(workType)
         {
             ConnectionString = connectionString;
+        }
+        public RepositoryDataService(MidpointRounding rounding, string separator, ServiceFactory.WorkType workType) : this(workType)
+        {
+            Rounding = rounding;
+            Separator = separator;
         }
 
         private SysDatabaseProp GetThroughSession(string prop)
@@ -118,6 +134,29 @@ namespace Indusoft.LDS.Usefull.Rounding
             }
             return sysDatabaseProp;
         }
+        private SysDatabaseProp GetManual(string prop)
+        {
+            switch (prop)
+            {
+                case "DoubleUtils.MidpointRounding":
+                    return new SysDatabaseProp()
+                    {
+                        PropDesc = "Алгоритм округления: 0 - ToEven (к ближайшему чётному), 1 - AwayFromZero (к большему целому), прочие значения интерпретируются как 0.",
+                        PropName = "DoubleUtils.MidpointRounding",
+                        PropValue = ((int)Rounding).ToString()
+                    };
+                case "DoubleUtils.NumberDecimalSeparator":
+                    return new SysDatabaseProp()
+                    {
+                        PropDesc = "Разделитель целой и дробной части числа",
+                        PropName = "DoubleUtils.NumberDecimalSeparator",
+                        PropValue = Separator
+                    };
+                default:
+                    return new SysDatabaseProp();
+            }
+        }
+
         public bool CanDeleteMailTemplate(Guid tmplUid)
         {
             throw new NotImplementedException();
@@ -200,6 +239,8 @@ namespace Indusoft.LDS.Usefull.Rounding
             {
                 case ServiceFactory.WorkType.Direct:
                     return GetDirect(prop);
+                case ServiceFactory.WorkType.Manual:
+                    return GetManual(prop);
                 case ServiceFactory.WorkType.Session:
                 default:
                     return GetThroughSession(prop);
