@@ -1001,6 +1001,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="g_experimental.cs" />
     <Compile Include="Rounding\ServiceFactory.cs" />
     <Compile Include="Rounding\Rounding.cs" />
     <Compile Include="SerialTest.cs" />
