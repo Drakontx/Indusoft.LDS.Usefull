@@ -604,9 +604,9 @@ namespace Indusoft.LDS.Usefull
         /// <param name="Calc"></param>
         /// <param name="days">Количество дней для поиска. -1 = 1 день по умолчанию</param>
         /// <param name="context">Контекст для поиска. Test - обязательно</param>
-        /// <param name="messages">Показ сообщений об ошибках</param>
+        /// <param name="error_message">Показ сообщения об исключении</param>
         /// <returns></returns>
-        public static List<AnalogTechTestResultHistory> HistTech(TechCalcBase Calc, double days, TechTestHistoryContext context, bool messages = false)
+        public static List<AnalogTechTestResultHistory> HistTech(TechCalcBase Calc, double days, TechTestHistoryContext context, bool error_message = false)
         {
             try
             {
@@ -615,8 +615,11 @@ namespace Indusoft.LDS.Usefull
                 if (days > 0)
                     days *= -1;
 
+                //Если в контексте не заданы статусы
                 if (context.Statuses == null)
                     context.Statuses = new int[] { 83, 192 };
+
+                //Если статусы заданы, но пустым массивом с 0 элементами
                 if (context.Statuses.Length == 0)
                     context.Statuses = new int[] { 83, 192 };
 
@@ -627,7 +630,7 @@ namespace Indusoft.LDS.Usefull
             }
             catch (Exception ex)
             {
-                if (messages)
+                if (error_message)
                     MessageBox.Show("Произошла ошибка расчета методики:\n" + ex.ToString() + "\n \n Обратитесь к администратору системы.", "HistTech", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return new List<AnalogTechTestResultHistory>();
