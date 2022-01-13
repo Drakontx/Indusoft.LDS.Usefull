@@ -27,11 +27,12 @@ namespace Indusoft.LDS.Usefull
 	public class SerialTest
 	{
 		/// <summary>
-		/// 
+		/// Серийный показатель.
+		/// Значение одного измерения выбранного показателя = выбранное значение определенного показателя с N измерений.
 		/// </summary>
 		/// <param name="MainTest">Главный показатель</param>
 		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
-		public SerialTest(AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
+		private SerialTest(AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests)
 		{
 			this.MainTest = MainTest;
 			this.MeasureTests = MeasureTests;
@@ -48,6 +49,29 @@ namespace Indusoft.LDS.Usefull
 		/// <param name="Threshold">Пороговая разница последнего и предпоследнего измерения вспомогательного показателя, при привышении которой ему будет добавлено измерение</param>
 		/// <param name="MainTest">Главный показатель</param>
 		/// <param name="MeasureTests">Вспомогательные показатели-измерения в порядке их соответствия номеру измерения главного показателя.</param>
+		/// <remarks>
+		///   <example>
+		///     <code>
+		///       Test0 - m2 - масса тигля с пробой после прокаливания (1 определение)
+		///       Test1 - m2 - масса тигля с пробой после прокаливания (2 определение)
+		///       Test2 - m2 - масса тигля с пробой после прокаливания (3 определение)
+		///       Test3 - m2 - масса тигля с пробой после прокаливания (4 определение)
+		///       Test4 - m2 - масса тигля с пробой после прокаливания
+		///       
+		///		  //4 показателя являются 4 измерениями показателя Test4. Добавление измерений показателям Test0-Test3 происходит при превышении порога 2 абсолютные единицы
+		///		  SerialTest tigl_posle = new SerialTest(2, Test4, Test0, Test1, Test2, Test3);
+		///		  
+		///		  //Можно изменить режим сравнения - абсолютный или процентный. По умолчанию режим - абсолютный. Можно изменить на процентное, в итоге порог будет 2% разныцы между последним и предыдущим измерением
+		///		  tigl_posle.Compare = CompareMode.Percent;
+		///		  
+		///		  //Можно менять то, какое значение будет использоваться в качестве измерения для основного показателя. По умолчанию - последнее измерение.
+		///		  //tigl_posle.ValueMode = ReturnValue.LastMeasure;
+		///		  
+		///		  //Вызов обработки набора
+		///		  tigl_posle.Process();
+		///     </code>
+		///   </example>
+		/// </remarks>
 		public SerialTest(double Threshold, AnalogTechTest MainTest, params AnalogTechTest[] MeasureTests) : this(MainTest, MeasureTests)
 		{
 			this.Threshold = Threshold;

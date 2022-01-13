@@ -22,26 +22,77 @@ namespace Indusoft.LDS.Usefull
     /// </summary>
     public class GradGraphClass
     {
-        string Product;
-        string GGProductPattern = "градуировочно";
-        Dictionary<AnalogTechTest, List<double>> Dpublics = new Dictionary<AnalogTechTest, List<double>>();
+        /// <summary>
+        /// Продукт образца
+        /// </summary>
+        public string Product { get; private set; }
 
         /// <summary>
-        /// 
+        /// Шаблон продукта для заданий построения ГГ (Устанавливаемое в типах возможностей ГГ)
+        /// </summary>
+        public string GGProductPattern { get; private set; }
+
+        Dictionary<AnalogTechTest, List<double>> Dpublics = new Dictionary<AnalogTechTest, List<double>>();
+
+
+        /// <summary>
+        /// Класс Градуировочного графика
         /// </summary>
         /// <param name="product">Продукт образца</param>
         /// <param name="AnalitSignal_Tests">Показатели, по которым из ГГ определяются искомые значения</param>
+        /// <remarks>
+        ///   <example>
+        ///     Пример использования. Условия: Опт.плотность является разностью измеренной и опт.плотности холостого испытания D = Dp - Dx. Концентрация С находится по графику C = f(D).
+        ///     <code>
+        ///       Dх - опт.плотность холостой пробы
+        ///       Dр - опт.плотность рабочей пробы
+        ///       D - опт.плотность (используемая в построении графика)
+        ///       C - концентрация, найденая по ГГ
+        ///       
+        ///       //Создается класс ГГ. Даем ему продукт образца и перечисляем оптические плотности, по которым в дальнейшем находятся искомые значения. В данном случае - один показатель D
+        ///       GradGraphClass gg = new GradGraphClass(Product, D);
+        ///       
+        ///       //При построении ГГ нужно синхронизовать измерения у D и Dp. (В новых версиях в ГГ есть галочка синхронизации в группе определений как стандартный функционал)
+        ///       gg.CheckGGMeasures(D, Dp);
+        ///       
+        ///       //Вызываем градуировочный график
+        ///       gg.GradGraph(C, D);
+        ///     </code>
+        ///   </example>
+        /// </remarks>
         public GradGraphClass(string product, params AnalogTechTest[] AnalitSignal_Tests)
         {
+            GGProductPattern = "градуировочно";
             Product = product;
             InitializeDpublic(AnalitSignal_Tests);
         }
+
         /// <summary>
-        /// 
+        /// Класс Градуировочного графика
         /// </summary>
         /// <param name="product">Продукт образца</param>
         /// <param name="GGProductPattern">Маска наименования продукта для построения ГГ (Устанавливаемое в типах возможностей ГГ)</param>
         /// <param name="AnalitSignal_Tests">Показатели, по которым из ГГ определяются искомые значения</param>
+        /// <remarks>
+        ///   <example>
+        ///     Пример использования. Условия: Опт.плотность является разностью измеренной и опт.плотности холостого испытания D = Dp - Dx. Концентрация С находится по графику C = f(D).
+        ///     <code>
+        ///       Dх - опт.плотность холостой пробы
+        ///       Dр - опт.плотность рабочей пробы
+        ///       D - опт.плотность (используемая в построении графика)
+        ///       C - концентрация, найденая по ГГ
+        ///       
+        ///       //Создается класс ГГ. Даем ему продукт образца, указываем продукт при построении ГГ, если он отличается от типового "градуировочно" и перечисляем оптические плотности, по которым в дальнейшем находятся искомые значения. В данном случае - один показатель D.
+        ///       GradGraphClass gg = new GradGraphClass(Product, "Построение градуировочного", D);
+        ///       
+        ///       //При построении ГГ нужно синхронизовать измерения у D и Dp. (В новых версиях в ГГ есть галочка синхронизации в группе определений как стандартный функционал)
+        ///       gg.CheckGGMeasures(D, Dp);
+        ///       
+        ///       //Вызываем градуировочный график
+        ///       gg.GradGraph(C, D);
+        ///     </code>
+        ///   </example>
+        /// </remarks>
         public GradGraphClass(string product, string GGProductPattern, params AnalogTechTest[] AnalitSignal_Tests):this(product, AnalitSignal_Tests)
         {
             SetGGProductPattern(GGProductPattern);
@@ -122,7 +173,7 @@ namespace Indusoft.LDS.Usefull
         }
 
         /// <summary>
-        /// Встроенная синхронизация количества измерений ГГ для упрощения записи. Условие содержания в Product шаблона GGProductPattern. Ссылается на g.CheckMeasures
+        /// Встроенная синхронизация количества измерений ГГ для упрощения записи. Условие содержания в Product шаблона GGProductPattern. Ссылается на g.CheckMeasures. Регистр сохраняется.
         /// </summary>
         /// <param name="SyncTechTests"></param>
         public void CheckGGMeasures(params AnalogTechTest[] SyncTechTests)
