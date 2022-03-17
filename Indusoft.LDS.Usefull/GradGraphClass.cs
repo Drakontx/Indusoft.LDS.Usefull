@@ -108,6 +108,79 @@ namespace Indusoft.LDS.Usefull
         }
 
         /// <summary>
+        /// Инициализация класса. Для прощения записи в расчетах
+        /// </summary>
+        /// <param name="gradGraph">Экземпляр класса ГГ</param>
+        /// <param name="product">Продукт образца</param>
+        /// <param name="GGProductPattern">Маска наименования продукта для построения ГГ (Устанавливаемое в типах возможностей ГГ)</param>
+        /// <param name="AnalitSignal_Tests">Показатели, по которым из ГГ определяются искомые значения</param>
+        /// <remarks>
+        ///   <example>
+        ///     Пример использования. Условия: Опт.плотность является разностью измеренной и опт.плотности холостого испытания D = Dp - Dx. Концентрация С находится по графику C = f(D).
+        ///     <code>
+        ///       Dх - опт.плотность холостой пробы
+        ///       Dр - опт.плотность рабочей пробы
+        ///       D - опт.плотность (используемая в построении графика)
+        ///       C - концентрация, найденая по ГГ
+        ///       
+        ///       //Создается класс ГГ. Даем ему продукт образца, указываем продукт при построении ГГ, если он отличается от типового "градуировочно" и перечисляем оптические плотности, по которым в дальнейшем находятся искомые значения. В данном случае - один показатель D.
+        ///       GradGraphClass gg = new GradGraphClass(Product, "Построение градуировочного", D);
+        ///       
+        ///       //При построении ГГ нужно синхронизовать измерения у D и Dp. (В новых версиях в ГГ есть галочка синхронизации в группе определений как стандартный функционал)
+        ///       gg.CheckGGMeasures(D, Dp);
+        ///       
+        ///       //Вызываем градуировочный график
+        ///       gg.GradGraph(C, D);
+        ///     </code>
+        ///   </example>
+        /// </remarks>
+        /// <returns></returns>
+        public static GradGraphClass Initialize(GradGraphClass gradGraph, string product, string GGProductPattern, params AnalogTechTest[] AnalitSignal_Tests)
+        {
+            if (gradGraph==null)
+            {
+                return new GradGraphClass(product, GGProductPattern, AnalitSignal_Tests);
+            }
+            return gradGraph;
+        }
+
+        /// <summary>
+        /// Инициализация класса. Для прощения записи в расчетах
+        /// </summary>
+        /// <param name="gradGraph">Экземпляр класса ГГ</param>
+        /// <param name="product">Продукт образца</param>
+        /// <param name="AnalitSignal_Tests">Показатели, по которым из ГГ определяются искомые значения</param>
+        /// <remarks>
+        ///   <example>
+        ///     Пример использования. Условия: Опт.плотность является разностью измеренной и опт.плотности холостого испытания D = Dp - Dx. Концентрация С находится по графику C = f(D).
+        ///     <code>
+        ///       Dх - опт.плотность холостой пробы
+        ///       Dр - опт.плотность рабочей пробы
+        ///       D - опт.плотность (используемая в построении графика)
+        ///       C - концентрация, найденая по ГГ
+        ///       
+        ///       //Создается класс ГГ. Даем ему продукт образца, указываем продукт при построении ГГ, если он отличается от типового "градуировочно" и перечисляем оптические плотности, по которым в дальнейшем находятся искомые значения. В данном случае - один показатель D.
+        ///       GradGraphClass gg = new GradGraphClass(Product, "Построение градуировочного", D);
+        ///       
+        ///       //При построении ГГ нужно синхронизовать измерения у D и Dp. (В новых версиях в ГГ есть галочка синхронизации в группе определений как стандартный функционал)
+        ///       gg.CheckGGMeasures(D, Dp);
+        ///       
+        ///       //Вызываем градуировочный график
+        ///       gg.GradGraph(C, D);
+        ///     </code>
+        ///   </example>
+        /// </remarks>
+        /// <returns></returns>
+        public static GradGraphClass Initialize(GradGraphClass gradGraph, string product, params AnalogTechTest[] AnalitSignal_Tests)
+        {
+            if (gradGraph == null)
+            {
+                return new GradGraphClass(product, AnalitSignal_Tests);
+            }
+            return gradGraph;
+        }
+
+        /// <summary>
         /// Создание Dpublic для перечисленных показателей
         /// </summary>
         /// <param name="Opt_plotnosti">Показатели</param>
@@ -119,7 +192,7 @@ namespace Indusoft.LDS.Usefull
                 {
                     if (!Dpublics.ContainsKey(analogTechTest))
                     {
-                        Dpublics.Add(analogTechTest, ZeroList(analogTechTest.Measures.Count));
+                        Dpublics.Add(analogTechTest, NaNList(analogTechTest.Measures.Count));
                     }
                 }
             }
@@ -130,12 +203,12 @@ namespace Indusoft.LDS.Usefull
         /// </summary>
         /// <param name="amount">Число элементов</param>
         /// <returns></returns>
-        List<double> ZeroList(int amount)
+        List<double> NaNList(int amount)
         {
             List<double> result = new List<double>();
             for (int i = 0; i < amount; i++)
             {
-                result.Add(0);
+                result.Add(double.NaN);
             }
             return result;
         }
@@ -161,7 +234,7 @@ namespace Indusoft.LDS.Usefull
                     else
                     {
                         //Добавляем недостающие
-                        Dpublic.InsertRange(Dpublic.Count, ZeroList(Math.Abs(difference)));
+                        Dpublic.InsertRange(Dpublic.Count, NaNList(Math.Abs(difference)));
                     }
                 }
             }
@@ -217,9 +290,9 @@ namespace Indusoft.LDS.Usefull
                         }
                     }
                 }
+                //Пересчитываем все, а не только то, что изменилось
                 for (int i = 0; i < Analit.Measures.Count; i++)
                 {
-                    //Пересчитываем все, а не только то, что изменилось
                     //Подходящий график существует
                     if (clbrGraphExists)
                     {
@@ -232,8 +305,10 @@ namespace Indusoft.LDS.Usefull
                         }
                     }
                     //Подходящего нет и значение сигнала изменилось
-                    else if (Dpublic[i] != AnalitSignal.Measures[i].Value)
+                    else if (!AnalitSignal.Measures[i].Value.Equals(Dpublic[i]))
                     {
+                        //Присвоение D, для проверки его на изменение
+                        Dpublic[i] = AnalitSignal.Measures[i].Value;
                         try
                         {
                             //Показываем возможные варианты
@@ -303,7 +378,7 @@ namespace Indusoft.LDS.Usefull
                             if (g.mExists(Analit, i)) { Analit.Measures[i].Value = C; }
                         }
                     }
-                    else if (Dpublic[i] != AnalitSignal.Measures[i].Value)
+                    else if (!AnalitSignal.Measures[i].Value.Equals(Dpublic[i]))
                     {
                         try
                         {
