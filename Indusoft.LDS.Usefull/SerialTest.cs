@@ -82,10 +82,15 @@ namespace Indusoft.LDS.Usefull
 		/// </summary>
 		public AnalogTechTest MainTest { get; private set; }
 
-		/// <summary>
-		/// Показатели-измерения
-		/// </summary>
-		private AnalogTechTest[] MeasureTests;
+        /// <summary>
+        /// Дополнительный показатель от которого считать % значение.
+        /// </summary>
+        public AnalogTechTest ThresholdTest { get; private set; }
+
+        /// <summary>
+        /// Показатели-измерения
+        /// </summary>
+        private AnalogTechTest[] MeasureTests;
 
 		/// <summary>
 		/// Порог разницы между измерениями массы высушиваемой чашки без осадка, при котором будет добавлено новое измерение его показателям-измерениям
@@ -120,12 +125,20 @@ namespace Indusoft.LDS.Usefull
 					switch (Compare)
 					{
 						case CompareMode.Percent:
-							{
-								double threshold_from_perc = (ATest.Measures.Count > 1) ? Math.Round(ATest.Measures[ATest.Measures.Count - 2].Value * Threshold * 0.01, Decimals, MidpointRounding.AwayFromZero) : double.NaN;
-								g.AddMeasureByThreshold(ATest, Decimals, threshold_from_perc);
-								break;
-							}
-						case CompareMode.Absolute:
+                            {
+                                double threshold_from_perc = double.NaN;
+                                if (ThresholdTest != null)
+                                {
+                                    threshold_from_perc = (ATest.Measures.Count > 1) ? Math.Round(ThresholdTest.Measures[MeasuresIndex].Value * Threshold * 0.01, Decimals, MidpointRounding.AwayFromZero) : double.NaN;
+                                }
+                                else
+                                {
+                                    threshold_from_perc = (ATest.Measures.Count > 1) ? Math.Round(ATest.Measures[ATest.Measures.Count - 2].Value * Threshold * 0.01, Decimals, MidpointRounding.AwayFromZero) : double.NaN;
+                                }
+                                g.AddMeasureByThreshold(ATest, Decimals, threshold_from_perc);
+                                break;
+                            }
+                        case CompareMode.Absolute:
 						default:
 							g.AddMeasureByThreshold(ATest, Decimals, Threshold);
 							break;
